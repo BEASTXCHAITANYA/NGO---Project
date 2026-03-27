@@ -10,6 +10,12 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-export const db = getFirestore(app);
+const app =
+  process.env.NEXT_PUBLIC_FIREBASE_API_KEY
+    ? getApps().length === 0
+      ? initializeApp(firebaseConfig)
+      : getApps()[0]
+    : null;
+
+export const db = app ? getFirestore(app) : (null as never);
 export default app;

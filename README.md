@@ -1,36 +1,141 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SevaConnect
+
+**A real-time NGO platform for transparent community development across India.**
+
+Live: [ngoproject024.vercel.app](https://ngoproject024.vercel.app)
+
+---
+
+## Problem
+
+Most NGOs lack the tools to show donors exactly where their money goes. Volunteers on the ground have no way to share field impact in real time, and aid allocation across regions is invisible to the public.
+
+SevaConnect solves this by combining live impact tracking, transparent donation ledgers, and geospatial aid mapping into a single platform.
+
+---
+
+## Features
+
+- **Real-Time Impact Feed** — volunteers upload photos and captions from the field; updates appear instantly via Firebase Firestore listeners
+- **Donation System** — name-based donation form with live success feedback and Firestore logging (demo mode, no real payments)
+- **Impact Dashboard** — live charts showing total raised, donor count, and per-donor breakdown
+- **Geospatial Aid Map** — Mapbox-powered map marking cities that have been helped and cities still in need
+- **Count-Up Stats** — animated counters for funds raised, communities served, and volunteers deployed
+- **3D Hero Background** — Three.js rotating icosahedron on the landing page
+- **Mobile-Responsive** — fully responsive layout with hamburger nav and adaptive grids
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Database | Firebase Firestore |
+| Auth | Firebase Authentication |
+| Maps | Mapbox GL JS |
+| Charts | Chart.js + react-chartjs-2 |
+| 3D Graphics | Three.js |
+| Payments | Stripe (demo mode) |
+| Deployment | Vercel |
+
+---
+
+## Screenshots
+
+> Add screenshots to a `/screenshots` folder and update the paths below.
+
+| Homepage | Impact Feed | Map |
+|---|---|---|
+| ![Homepage](screenshots/homepage.png) | ![Feed](screenshots/feed.png) | ![Map](screenshots/map.png) |
+
+| Dashboard | Donate |
+|---|---|
+| ![Dashboard](screenshots/dashboard.png) | ![Donate](screenshots/donate.png) |
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- A Firebase project with Firestore enabled
+- A Mapbox account (free tier works)
+
+### Installation
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+cd YOUR_REPO
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up environment variables
+cp .env.example .env.local
+# Fill in your keys (see Environment Variables below)
+
+# 4. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file at the project root:
 
-## Learn More
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+NEXT_PUBLIC_MAPBOX_TOKEN=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The app is deployed on Vercel. To deploy your own instance:
 
-## Deploy on Vercel
+1. Push the repo to GitHub
+2. Import the project at [vercel.com](https://vercel.com)
+3. Set the environment variables in **Project → Settings → Environment Variables**
+4. Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+src/
+├── app/                  # Next.js App Router pages + API routes
+│   ├── api/              # donations, impacts, payments
+│   ├── dashboard/        # Impact dashboard
+│   ├── donate/           # Donation page
+│   └── map/              # Aid map page
+├── components/
+│   ├── animations/       # FadeIn, HeroScene (Three.js)
+│   ├── dashboard/        # StatsCard
+│   ├── impact/           # ImpactFeed, ImpactStats, ImageUploader, LiveBanner
+│   ├── layout/           # Navbar, Footer
+│   ├── map/              # MapView
+│   └── payments/         # DonateForm
+└── services/             # Firebase, Firestore helpers, Auth
+```
+
+---
+
+## License
+
+MIT

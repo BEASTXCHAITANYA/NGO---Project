@@ -48,15 +48,13 @@ SevaConnect solves this by combining live impact tracking, transparent donation 
 
 ## Screenshots
 
-> Add screenshots to a `/screenshots` folder and update the paths below.
-
-| Homepage | Impact Feed | Map |
+| Homepage | Dashboard | Map |
 |---|---|---|
-| ![Homepage](screenshots/homepage.png) | ![Feed](screenshots/feed.png) | ![Map](screenshots/map.png) |
+| ![Homepage](./screenshots/home.png) | ![Dashboard](./screenshots/dashboard.png) | ![Map](./screenshots/map.png) |
 
-| Dashboard | Donate |
+| Impact Feed | Donate |
 |---|---|
-| ![Dashboard](screenshots/dashboard.png) | ![Donate](screenshots/donate.png) |
+| ![Impact](./screenshots/impact.png) | ![Donate](./screenshots/donate.png) |
 
 ---
 

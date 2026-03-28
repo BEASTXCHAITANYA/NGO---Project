@@ -16,11 +16,14 @@ SevaConnect solves this by combining live impact tracking, transparent donation 
 
 ## Features
 
-- **Real-Time Impact Feed** — volunteers upload photos and captions from the field; updates appear instantly via Firebase Firestore listeners
-- **Donation System** — name-based donation form with live success feedback and Firestore logging (demo mode, no real payments)
-- **Impact Dashboard** — live charts showing total raised, donor count, and per-donor breakdown
-- **Geospatial Aid Map** — Mapbox-powered map marking cities that have been helped and cities still in need
-- **Count-Up Stats** — animated counters for funds raised, communities served, and volunteers deployed
+- **Real-Time Impact Feed** — volunteers upload photos and captions from the field; updates stream instantly via Firebase `onSnapshot` with no page refresh required
+- **Image Upload & Captions** — field workers can attach a photo and write a caption; images are stored as base64 in Firestore and displayed in a live card grid
+- **Donation System** — name-based donation form with inline success feedback and Firestore logging; Stripe integration is wired and ready for production keys (currently runs in demo mode)
+- **Map-Based Aid Tracking** — Mapbox GL JS map visualises which cities have received aid (green) and which still need support (red), with hover tooltips and glow markers
+- **Impact Dashboard** — live bar chart and stat cards showing total funds raised, donor count, and average donation, powered by Chart.js
+- **Backend API Routes** — Next.js App Router API handlers for donations, impacts, and Stripe checkout sessions; all routes guard against missing environment variables at runtime
+- **Environment-Based Configuration** — all secrets (Firebase, Mapbox, Stripe) are loaded from `.env.local`; the app degrades gracefully when keys are absent during build
+- **Count-Up Stats** — scroll-triggered animated counters for funds raised, communities served, and volunteers deployed
 - **3D Hero Background** — Three.js rotating icosahedron on the landing page
 - **Mobile-Responsive** — fully responsive layout with hamburger nav and adaptive grids
 
